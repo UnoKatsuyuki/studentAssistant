@@ -19,7 +19,7 @@ public class StudyTrackerTest {
 
     @Test
     void testAddRecord() {
-        StudyRecord record = new StudyRecord(LocalDate.now(), "Java", 60);
+        StudyRecord record = new StudyRecord("alice", LocalDate.now(), "Java", 60);
         tracker.addRecord(record);
         assertEquals(1, tracker.getRecords().size());
         assertTrue(tracker.getRecords().contains(record));
@@ -31,6 +31,66 @@ public class StudyTrackerTest {
             tracker.addRecord(null);
         });
         assertEquals("学习记录不能为空。", exception.getMessage());
+    }
+
+    @Test
+    void testGetRecordsByUser() {
+        tracker.addRecord(new StudyRecord("alice", LocalDate.of(2025, 6, 25), "Math", 90));
+        tracker.addRecord(new StudyRecord("bob", LocalDate.of(2025, 6, 25), "Math", 60));
+        tracker.addRecord(new StudyRecord("alice", LocalDate.of(2025, 6, 26), "English", 30));
+        List<StudyRecord> aliceRecords = tracker.getRecordsByUser("alice");
+        assertEquals(2, aliceRecords.size());
+        for (StudyRecord r : aliceRecords) {
+            assertEquals("alice", r.getUsername());
+        }
+        List<StudyRecord> bobRecords = tracker.getRecordsByUser("bob");
+        assertEquals(1, bobRecords.size());
+        assertEquals("bob", bobRecords.get(0).getUsername());
+    }
+
+    @Test
+    void testGetWeeklyStudySummaryMultipleUsers() {
+        LocalDate monday = LocalDate.of(2025, 6, 23);
+        LocalDate tuesday = LocalDate.of(2025, 6, 24);
+        tracker.addRecord(new StudyRecord("alice", monday, "Java", 60));
+        tracker.addRecord(new StudyRecord("bob", monday, "Java", 120));
+        tracker.addRecord(new StudyRecord("alice", tuesday, "Math", 30));
+        Map<LocalDate, Integer> aliceSummary = tracker.getWeeklyStudySummary(monday, "alice");
+        assertEquals(60, aliceSummary.get(monday));
+        assertEquals(30, aliceSummary.get(tuesday));
+        Map<LocalDate, Integer> bobSummary = tracker.getWeeklyStudySummary(monday, "bob");
+        assertEquals(120, bobSummary.get(monday));
+        assertEquals(0, bobSummary.get(tuesday));
+    }
+
+    @Test
+    void testGetWeeklySubjectSummaryMultipleUsers() {
+        LocalDate monday = LocalDate.of(2025, 6, 23);
+        tracker.addRecord(new StudyRecord("alice", monday, "Java", 60));
+        tracker.addRecord(new StudyRecord("bob", monday, "Java", 120));
+        tracker.addRecord(new StudyRecord("alice", monday, "Math", 30));
+        Map<String, Integer> aliceSubject = tracker.getWeeklySubjectSummary(monday, "alice");
+        assertEquals(60, aliceSubject.get("Java"));
+        assertEquals(30, aliceSubject.get("Math"));
+        Map<String, Integer> bobSubject = tracker.getWeeklySubjectSummary(monday, "bob");
+        assertEquals(120, bobSubject.get("Java"));
+        assertNull(bobSubject.get("Math"));
+    }
+
+    @Test
+    void testGetRecentDaysSummary() {
+        LocalDate today = LocalDate.now();
+        tracker.addRecord(new StudyRecord("alice", today.minusDays(2), "Java", 60));
+        tracker.addRecord(new StudyRecord("alice", today.minusDays(1), "Math", 30));
+        tracker.addRecord(new StudyRecord("bob", today.minusDays(1), "Java", 45));
+        Map<LocalDate, Integer> aliceTrend = tracker.getRecentDaysSummary(3, "alice");
+        assertEquals(60, aliceTrend.get(today.minusDays(2)));
+        assertEquals(30, aliceTrend.get(today.minusDays(1)));
+        assertEquals(0, aliceTrend.get(today));
+        Map<LocalDate, Integer> bobTrend = tracker.getRecentDaysSummary(3, "bob");
+        assertEquals(0, bobTrend.get(today.minusDays(2)));
+        assertEquals(45, bobTrend.get(today.minusDays(1)));
+        assertEquals(0, bobTrend.get(today));
     }
 
     @Test
