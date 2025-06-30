@@ -96,7 +96,7 @@ public class StudyTrackerTest {
     @Test
     void testGetWeeklyStudySummaryEmpty() {
         LocalDate date = LocalDate.of(2025, 6, 27);
-        Map<LocalDate, Integer> summary = tracker.getWeeklyStudySummary(date);
+        Map<LocalDate, Integer> summary = tracker.getWeeklyStudySummary(date, "");
         assertEquals(7, summary.size()); // A week has 7 days
         assertTrue(summary.values().stream().allMatch(duration -> duration == 0));
     }
@@ -104,10 +104,10 @@ public class StudyTrackerTest {
     @Test
     void testGetWeeklyStudySummarySingleRecord() {
         LocalDate recordDate = LocalDate.of(2025, 6, 25); // Wednesday
-        tracker.addRecord(new StudyRecord(recordDate, "Math", 90));
+        tracker.addRecord(new StudyRecord("alice", recordDate, "Math", 90));
 
         LocalDate dateInSameWeek = LocalDate.of(2025, 6, 27); // Friday
-        Map<LocalDate, Integer> summary = tracker.getWeeklyStudySummary(dateInSameWeek);
+        Map<LocalDate, Integer> summary = tracker.getWeeklyStudySummary(dateInSameWeek, "");
 
         assertEquals(7, summary.size());
         assertEquals(90, summary.get(recordDate));
@@ -117,10 +117,10 @@ public class StudyTrackerTest {
     @Test
     void testGetWeeklyStudySummaryMultipleRecordsSameDay() {
         LocalDate recordDate = LocalDate.of(2025, 6, 25);
-        tracker.addRecord(new StudyRecord(recordDate, "Math", 30));
-        tracker.addRecord(new StudyRecord(recordDate, "Physics", 60));
+        tracker.addRecord(new StudyRecord("alice", recordDate, "Math", 30));
+        tracker.addRecord(new StudyRecord("alice", recordDate, "Physics", 60));
 
-        Map<LocalDate, Integer> summary = tracker.getWeeklyStudySummary(recordDate);
+        Map<LocalDate, Integer> summary = tracker.getWeeklyStudySummary(recordDate, "");
         assertEquals(90, summary.get(recordDate));
     }
 
@@ -129,14 +129,14 @@ public class StudyTrackerTest {
         LocalDate date1 = LocalDate.of(2025, 6, 23); // Monday
         LocalDate date2 = LocalDate.of(2025, 6, 30); // Next Monday
 
-        tracker.addRecord(new StudyRecord(date1, "Java", 60));
-        tracker.addRecord(new StudyRecord(date2, "Python", 120));
+        tracker.addRecord(new StudyRecord("alice", date1, "Java", 60));
+        tracker.addRecord(new StudyRecord("alice", date2, "Python", 120));
 
-        Map<LocalDate, Integer> summary = tracker.getWeeklyStudySummary(date1);
+        Map<LocalDate, Integer> summary = tracker.getWeeklyStudySummary(date1, "");
         assertEquals(60, summary.get(date1));
         assertNull(summary.get(date2)); // Should not include next week's record
 
-        Map<LocalDate, Integer> summaryNextWeek = tracker.getWeeklyStudySummary(date2);
+        Map<LocalDate, Integer> summaryNextWeek = tracker.getWeeklyStudySummary(date2, "");
         assertEquals(120, summaryNextWeek.get(date2));
         assertNull(summaryNextWeek.get(date1)); // Should not include previous week's record
     }
@@ -144,16 +144,16 @@ public class StudyTrackerTest {
     @Test
     void testGetWeeklySubjectSummaryEmpty() {
         LocalDate date = LocalDate.of(2025, 6, 27);
-        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(date);
+        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(date, "");
         assertTrue(summary.isEmpty());
     }
 
     @Test
     void testGetWeeklySubjectSummarySingleRecord() {
         LocalDate recordDate = LocalDate.of(2025, 6, 25);
-        tracker.addRecord(new StudyRecord(recordDate, "Math", 90));
+        tracker.addRecord(new StudyRecord("alice", recordDate, "Math", 90));
 
-        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(recordDate);
+        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(recordDate, "");
         assertEquals(1, summary.size());
         assertEquals(90, summary.get("Math"));
     }
@@ -161,20 +161,20 @@ public class StudyTrackerTest {
     @Test
     void testGetWeeklySubjectSummaryMultipleRecordsSameSubject() {
         LocalDate recordDate = LocalDate.of(2025, 6, 25);
-        tracker.addRecord(new StudyRecord(recordDate, "Math", 30));
-        tracker.addRecord(new StudyRecord(recordDate, "Math", 60));
+        tracker.addRecord(new StudyRecord("alice", recordDate, "Math", 30));
+        tracker.addRecord(new StudyRecord("alice", recordDate, "Math", 60));
 
-        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(recordDate);
+        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(recordDate, "");
         assertEquals(90, summary.get("Math"));
     }
 
     @Test
     void testGetWeeklySubjectSummaryMultipleRecordsDifferentSubjects() {
         LocalDate recordDate = LocalDate.of(2025, 6, 25);
-        tracker.addRecord(new StudyRecord(recordDate, "Math", 30));
-        tracker.addRecord(new StudyRecord(recordDate, "Physics", 60));
+        tracker.addRecord(new StudyRecord("alice", recordDate, "Math", 30));
+        tracker.addRecord(new StudyRecord("alice", recordDate, "Physics", 60));
 
-        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(recordDate);
+        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(recordDate, "");
         assertEquals(30, summary.get("Math"));
         assertEquals(60, summary.get("Physics"));
     }
@@ -184,14 +184,14 @@ public class StudyTrackerTest {
         LocalDate date1 = LocalDate.of(2025, 6, 23);
         LocalDate date2 = LocalDate.of(2025, 6, 30);
 
-        tracker.addRecord(new StudyRecord(date1, "Java", 60));
-        tracker.addRecord(new StudyRecord(date2, "Python", 120));
+        tracker.addRecord(new StudyRecord("alice", date1, "Java", 60));
+        tracker.addRecord(new StudyRecord("alice", date2, "Python", 120));
 
-        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(date1);
+        Map<String, Integer> summary = tracker.getWeeklySubjectSummary(date1, "");
         assertEquals(60, summary.get("Java"));
         assertNull(summary.get("Python"));
 
-        Map<String, Integer> summaryNextWeek = tracker.getWeeklySubjectSummary(date2);
+        Map<String, Integer> summaryNextWeek = tracker.getWeeklySubjectSummary(date2, "");
         assertEquals(120, summaryNextWeek.get("Python"));
         assertNull(summaryNextWeek.get("Java"));
     }
