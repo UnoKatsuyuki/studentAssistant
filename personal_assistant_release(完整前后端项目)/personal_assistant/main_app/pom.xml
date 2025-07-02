@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 继承自父项目的基本信息 -->
+    <parent>
+        <groupId>com.assistant</groupId>
+        <artifactId>personal_assistant</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- 当前模块是 main-app -->
+    <artifactId>main-app</artifactId>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- 核心：在这里添加对其他所有模块的依赖 -->
+
+        <!-- 依赖任务提醒模块 -->
+        <dependency>
+            <groupId>com.assistant</groupId>
+            <artifactId>task_module</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- 依赖学习打卡模块 -->
+        <dependency>
+            <groupId>com.assistant</groupId>
+            <artifactId>study_module</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- 依赖收支记账模块 -->
+        <dependency>
+            <groupId>com.assistant</groupId>
+            <artifactId>finance_module</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- 依赖健康习惯打卡模块 -->
+        <dependency>
+            <groupId>com.assistant</groupId>
+            <artifactId>health_module</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- 依赖GUI模块 -->
+        <dependency>
+            <groupId>com.assistant</groupId>
+            <artifactId>gui_module</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--
+                这个插件非常重要，它会将本项目及所有依赖的模块
+                打包成一个单独的、可执行的 JAR 文件。
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- 指定 JAR 包的入口类 -->
+                            <mainClass>com.assistant.PersonalAssistantMain</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <!-- 这个配置会把所有依赖都打进包里 -->
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
