@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.assistant.finance.TransactionServiceTest" time="0.042" tests="11" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="24"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="D:\studentAssistant\personal_assistant_release(完整前后端项目)\personal_assistant\finance_module\target\test-classes;D:\studentAssistant\personal_assistant_release(完整前后端项目)\personal_assistant\finance_module\target\classes;C:\Users\33262\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\33262\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\33262\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\33262\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\33262\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\33262\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="24"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-24\bin"/>
+    <property name="sun.java.command" value="C:\Users\33262\AppData\Local\Temp\surefire17615738547450166187\surefirebooter15975636486836371113.jar C:\Users\33262\AppData\Local\Temp\surefire17615738547450166187 2025-07-05T11-08-21_444-jvmRun1 surefire1177083901517103128tmp surefire_011017001036349984892tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\studentAssistant\personal_assistant_release(完整前后端项目)\personal_assistant\finance_module\target\test-classes;D:\studentAssistant\personal_assistant_release(完整前后端项目)\personal_assistant\finance_module\target\classes;C:\Users\33262\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\33262\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\33262\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\33262\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\33262\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\33262\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\33262"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-04-15"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-24"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\studentAssistant\personal_assistant_release(完整前后端项目)\personal_assistant\finance_module"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\33262\AppData\Local\Temp\surefire17615738547450166187\surefirebooter15975636486836371113.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="24.0.1+9-30"/>
+    <property name="user.name" value="33262"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\33262\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\33262\AppData\Local\Temp\"/>
+    <property name="java.version" value="24.0.1"/>
+    <property name="user.dir" value="D:\studentAssistant\personal_assistant_release(完整前后端项目)\personal_assistant\finance_module"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-24\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;D:\KingbaseES\KESRealPro\V009R001C002B0014\Interface\compress\v8r6_compress_win\kb_x64\release;D:\虚拟机\bin\;C:\Pr;gram Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\基础编程实训\大一软件\Maven\apache-maven-3.8.8-bin\apache-maven-3.8.8\bin;D:\基础编程实训\大一软件\jdk-17_windows-x64_bin\jdk-17.0.9\bin;D:\基础编程实训\大一软件\jdk-17_windows-x64_bin\jdk-17.0.9\jre\bin;D:\基础编程实训\大一软件\openjfx-21.0.2_windows-x64_bin-sdk\javafx-sdk-21.0.2\bin;D:\runtime\win64;D:;bin;D:\Nodejs\;D:\OnlineShoppingPlatform\apache-maven-3.6.1bin;%JMETER_HOME%\bin;C:\Program Files (x86)\Apache\Maven\apache-maven-3.9.10\bin;C:\Program Files\Git\cmd;D:\Anaconda;D:\Anaconda\Library\mingw-w64\bin;D:\Anaconda\Library\usr\bin;D:\Anaconda\Library\bin;D:\Anaconda\Scripts;C:\Users\33262\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\33262\AppData\Local\Programs\Python\Python312\;C:\Users\33262\AppData\Local\Programs\Python\Launcher\;C:\Users\33262\AppData\Local\Microsoft\WindowsApps;C:\Users\33262\Desktop\bin;D:\VS Code\Microsoft VS Code\bin;D:\CLion\CLion 2024.3.5\bin;;D:\Webstorm\WebStorm 2025.1.1\bin;;D:\Cursor\cursor\resources\app\bin;C:\Users\33262\AppData\Roaming\npm;C:\texlive\2025\bin\windows;C:\Users\33262\AppData\Local\GitHubDesktop\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="24.0.1+9-30"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="68.0"/>
+  </properties>
+  <testcase name="addIncomeTransaction_PositiveAmount_AddsTransaction" classname="com.assistant.finance.TransactionServiceTest" time="0.02"/>
+  <testcase name="addExpenseTransaction_PositiveAmount_AddsTransaction" classname="com.assistant.finance.TransactionServiceTest" time="0.001"/>
+  <testcase name="calculateMonthlyBalance_OnlyIncome_ReturnsCorrectBalance" classname="com.assistant.finance.TransactionServiceTest" time="0"/>
+  <testcase name="calculateMonthlyBalance_OnlyExpense_ReturnsCorrectBalance" classname="com.assistant.finance.TransactionServiceTest" time="0.001"/>
+  <testcase name="calculateMonthlyBalance_TransactionsInOtherMonths_IgnoresThem" classname="com.assistant.finance.TransactionServiceTest" time="0"/>
+  <testcase name="addTransaction_NegativeAmount_ThrowsIllegalArgumentException" classname="com.assistant.finance.TransactionServiceTest" time="0.007"/>
+  <testcase name="calculateMonthlyBalance_TransactionsAcrossYears_FiltersByYear" classname="com.assistant.finance.TransactionServiceTest" time="0.001"/>
+  <testcase name="getAllTransactions_ReturnsCopy" classname="com.assistant.finance.TransactionServiceTest" time="0.001"/>
+  <testcase name="calculateMonthlyBalance_MixedTransactions_ReturnsCorrectBalance" classname="com.assistant.finance.TransactionServiceTest" time="0"/>
+  <testcase name="addTransaction_ZeroAmount_ThrowsIllegalArgumentException" classname="com.assistant.finance.TransactionServiceTest" time="0.001"/>
+  <testcase name="calculateMonthlyBalance_NoTransactions_ReturnsZero" classname="com.assistant.finance.TransactionServiceTest" time="0"/>
+</testsuite>
