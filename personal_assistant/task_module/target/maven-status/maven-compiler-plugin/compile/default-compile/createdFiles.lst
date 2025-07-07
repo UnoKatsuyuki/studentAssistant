@@ -1,0 +1,6 @@
+com\assistant\task\Task.class
+com\assistant\task\TaskService.class
+com\assistant\task\TaskConsoleUI.class
+org\example\Main.class
+com\assistant\task\TaskType.class
+com\assistant\task\TaskTypeService.class
