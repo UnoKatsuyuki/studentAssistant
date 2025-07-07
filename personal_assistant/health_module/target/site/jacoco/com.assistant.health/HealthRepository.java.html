@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HealthRepository.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">health_module</a> &gt; <a href="index.source.html" class="el_package">com.assistant.health</a> &gt; <span class="el_source">HealthRepository.java</span></div><h1>HealthRepository.java</h1><pre class="source lang-java linenums">package com.assistant.health;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+
+public class HealthRepository {
+
+    private static final String FILE_PATH = &quot;health_records.csv&quot;;
+    private final List&lt;HealthRecord&gt; recordsCache;
+    private final AtomicLong idGenerator;
+
+<span class="nc" id="L17">    public HealthRepository() {</span>
+<span class="nc" id="L18">        this.recordsCache = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L19">        this.load(); // 初始化时加载数据</span>
+<span class="nc" id="L20">        long maxId = recordsCache.stream().mapToLong(HealthRecord::getId).max().orElse(0L);</span>
+<span class="nc" id="L21">        this.idGenerator = new AtomicLong(maxId);</span>
+<span class="nc" id="L22">    }</span>
+
+    /**
+     * 从CSV文件加载所有记录到内存缓存
+     */
+    private void load() {
+<span class="nc" id="L28">        File file = new File(FILE_PATH);</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if (!file.exists()) {</span>
+<span class="nc" id="L30">            return; // 文件不存在，无需加载</span>
+        }
+
+<span class="nc" id="L33">        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {</span>
+            String line;
+<span class="nc bnc" id="L35" title="All 2 branches missed.">            while ((line = br.readLine()) != null) {</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">                if (!line.trim().isEmpty()) {</span>
+<span class="nc" id="L37">                    recordsCache.add(HealthRecord.fromCsvRow(line.split(&quot;,&quot;)));</span>
+                }
+            }
+<span class="nc" id="L40">        } catch (IOException e) {</span>
+<span class="nc" id="L41">            System.err.println(&quot;读取健康记录文件失败: &quot; + e.getMessage());</span>
+<span class="nc" id="L42">        }</span>
+<span class="nc" id="L43">    }</span>
+
+    /**
+     * 将内存缓存中的所有记录保存到CSV文件
+     */
+    private void save() {
+<span class="nc" id="L49">        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(FILE_PATH), StandardCharsets.UTF_8))) {</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            for (HealthRecord record : recordsCache) {</span>
+<span class="nc" id="L51">                bw.write(String.join(&quot;,&quot;, record.toCsvRow()));</span>
+<span class="nc" id="L52">                bw.newLine();</span>
+<span class="nc" id="L53">            }</span>
+<span class="nc" id="L54">        } catch (IOException e) {</span>
+<span class="nc" id="L55">            System.err.println(&quot;保存健康记录文件失败: &quot; + e.getMessage());</span>
+<span class="nc" id="L56">        }</span>
+<span class="nc" id="L57">    }</span>
+
+    /**
+     * 添加一条新记录并立即保存
+     */
+    public void add(HealthRecord record) {
+<span class="nc" id="L63">        record.setId(idGenerator.incrementAndGet());</span>
+<span class="nc" id="L64">        this.recordsCache.add(record);</span>
+<span class="nc" id="L65">        save();</span>
+<span class="nc" id="L66">    }</span>
+
+    /**
+     * 获取所有记录
+     */
+    public List&lt;HealthRecord&gt; findAll() {
+<span class="nc" id="L72">        return new ArrayList&lt;&gt;(recordsCache);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

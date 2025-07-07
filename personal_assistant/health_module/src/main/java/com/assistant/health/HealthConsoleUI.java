@@ -5,9 +5,16 @@ import java.util.*;
 
 public class HealthConsoleUI {
     private final Scanner scanner = new Scanner(System.in);
-    private final HealthService healthService = new HealthService();
+    private final HealthService healthService; // 只声明
+
+    public HealthConsoleUI() {
+        // 在构造函数中手动完成依赖注入
+        HealthRepository repository = new HealthRepository();
+        this.healthService = new HealthService(repository);
+    }
 
     public void start() {
+        // ... start 方法的内部逻辑保持不变
         System.out.println("欢迎使用健康习惯打卡模块！");
         while (true) {
             System.out.println("\n请选择操作：");
@@ -33,6 +40,7 @@ public class HealthConsoleUI {
         }
     }
 
+    // ... handlePunch 和 displayAllRecords 方法保持不变
     private void handlePunch() {
         Map<String, String> habits = healthService.getSupportedHabits();
         System.out.println("可打卡项目：" + String.join("、", habits.keySet()));
@@ -72,7 +80,6 @@ public class HealthConsoleUI {
         }
 
         System.out.println("详细打卡记录如下：");
-        // 为了按日期排序显示，我们获取键并排序
         List<LocalDate> sortedDates = new ArrayList<>(recordsByDate.keySet());
         Collections.sort(sortedDates);
 
@@ -84,7 +91,6 @@ public class HealthConsoleUI {
         }
     }
 
-    // 方便独立测试
     public static void main(String[] args) {
         new HealthConsoleUI().start();
     }

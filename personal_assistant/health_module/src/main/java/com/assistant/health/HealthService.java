@@ -7,11 +7,15 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class HealthService {
-    private final HealthRepository repository;
+    private final HealthRepository repository; // 依赖
     private final Map<String, String> supportedHabits;
 
-    public HealthService() {
-        this.repository = new HealthRepository();
+    /**
+     * 重构后的构造函数
+     * @param repository 从外部传入的依赖
+     */
+    public HealthService(HealthRepository repository) {
+        this.repository = repository; // 不再使用 new
         this.supportedHabits = Map.of(
                 "睡眠", "小时",
                 "运动", "分钟",
@@ -23,17 +27,11 @@ public class HealthService {
         return supportedHabits;
     }
 
-    /**
-     * 添加一条打卡记录
-     * @return 添加成功的记录
-     * @throws IllegalArgumentException 如果当天已打卡该项目
-     */
     public HealthRecord addRecord(String habit, double value) throws IllegalArgumentException {
         if (!supportedHabits.containsKey(habit)) {
             throw new IllegalArgumentException("不支持该打卡项目。");
         }
 
-        // 检查今日是否已打卡该项目
         LocalDate today = LocalDate.now();
         boolean alreadyPunched = repository.findAll().stream()
                 .anyMatch(r -> r.getDate().equals(today) && r.getHabit().equals(habit));
@@ -48,9 +46,6 @@ public class HealthService {
         return record;
     }
 
-    /**
-     * 获取按日期分组的所有记录
-     */
     public Map<LocalDate, List<HealthRecord>> getRecordsGroupedByDate() {
         return repository.findAll().stream()
                 .collect(Collectors.groupingBy(HealthRecord::getDate));

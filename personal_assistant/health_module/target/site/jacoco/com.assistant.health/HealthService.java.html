@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HealthService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">health_module</a> &gt; <a href="index.source.html" class="el_package">com.assistant.health</a> &gt; <span class="el_source">HealthService.java</span></div><h1>HealthService.java</h1><pre class="source lang-java linenums">package com.assistant.health;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class HealthService {
+    private final HealthRepository repository; // 依赖
+    private final Map&lt;String, String&gt; supportedHabits;
+
+    /**
+     * 重构后的构造函数
+     * @param repository 从外部传入的依赖
+     */
+<span class="fc" id="L17">    public HealthService(HealthRepository repository) {</span>
+<span class="fc" id="L18">        this.repository = repository; // 不再使用 new</span>
+<span class="fc" id="L19">        this.supportedHabits = Map.of(</span>
+                &quot;睡眠&quot;, &quot;小时&quot;,
+                &quot;运动&quot;, &quot;分钟&quot;,
+                &quot;喝水&quot;, &quot;毫升&quot;
+        );
+<span class="fc" id="L24">    }</span>
+
+    public Map&lt;String, String&gt; getSupportedHabits() {
+<span class="nc" id="L27">        return supportedHabits;</span>
+    }
+
+    public HealthRecord addRecord(String habit, double value) throws IllegalArgumentException {
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (!supportedHabits.containsKey(habit)) {</span>
+<span class="fc" id="L32">            throw new IllegalArgumentException(&quot;不支持该打卡项目。&quot;);</span>
+        }
+
+<span class="fc" id="L35">        LocalDate today = LocalDate.now();</span>
+<span class="fc" id="L36">        boolean alreadyPunched = repository.findAll().stream()</span>
+<span class="pc bpc" id="L37" title="2 of 4 branches missed.">                .anyMatch(r -&gt; r.getDate().equals(today) &amp;&amp; r.getHabit().equals(habit));</span>
+
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (alreadyPunched) {</span>
+<span class="fc" id="L40">            throw new IllegalArgumentException(&quot;今日已打卡该项目，不能重复打卡！&quot;);</span>
+        }
+
+<span class="fc" id="L43">        String unit = supportedHabits.get(habit);</span>
+<span class="fc" id="L44">        HealthRecord record = new HealthRecord(LocalDateTime.now(), habit, value, unit);</span>
+<span class="fc" id="L45">        repository.add(record);</span>
+<span class="fc" id="L46">        return record;</span>
+    }
+
+    public Map&lt;LocalDate, List&lt;HealthRecord&gt;&gt; getRecordsGroupedByDate() {
+<span class="fc" id="L50">        return repository.findAll().stream()</span>
+<span class="fc" id="L51">                .collect(Collectors.groupingBy(HealthRecord::getDate));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
