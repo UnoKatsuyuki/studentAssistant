@@ -10,7 +10,7 @@ public class CSVUtils {
         List<String[]> records = new ArrayList<>();
         File file = new File(filePath);
         if (!file.exists()) {
-            return records;
+            throw new IOException("文件不存在: " + filePath);
         }
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
             String line;
