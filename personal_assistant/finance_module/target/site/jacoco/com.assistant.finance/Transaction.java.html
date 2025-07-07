@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Transaction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">finance_module</a> &gt; <a href="index.source.html" class="el_package">com.assistant.finance</a> &gt; <span class="el_source">Transaction.java</span></div><h1>Transaction.java</h1><pre class="source lang-java linenums">package com.assistant.finance;
+
+import java.time.LocalDate;
+
+//收支记录实体类
+public class Transaction {
+    private final double amount;  //收支金额
+    private final TransactionType type;  //收支类型
+    private final LocalDate date;  //收支记录的时间
+    private final String description;  //收支记录描述
+
+<span class="fc" id="L12">    public Transaction(double amount, TransactionType type, LocalDate date, String description) {</span>
+<span class="fc" id="L13">        this.amount = amount;</span>
+<span class="fc" id="L14">        this.type = type;</span>
+<span class="fc" id="L15">        this.date = date;</span>
+<span class="fc" id="L16">        this.description = description;</span>
+<span class="fc" id="L17">    }</span>
+
+    public double getAmount() {
+<span class="fc" id="L20">        return amount;</span>
+    }
+
+    public TransactionType getType() {
+<span class="fc" id="L24">        return type;</span>
+    }
+
+    public LocalDate getDate() {
+<span class="fc" id="L28">        return date;</span>
+    }
+
+    public String getDescription() {
+<span class="fc" id="L32">        return description;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.assistant.task.TaskTypeServiceTest" time="0.001" tests="5" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.class.path" value="D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\apache\maven\surefire\surefire-booter\2.22.2\surefire-booter-2.22.2.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\apache\maven\surefire\surefire-api\2.22.2\surefire-api-2.22.2.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\apache\maven\surefire\surefire-logger-api\2.22.2\surefire-logger-api-2.22.2.jar;C:\Users\Lenovo\Desktop\personal_assistant_release(完整前后端项目)\personal_assistant\task_module\target\test-classes;C:\Users\Lenovo\Desktop\personal_assistant_release(完整前后端项目)\personal_assistant\task_module\target\classes;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\junit\junit\4.13.2\junit-4.13.2.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\mockito\mockito-core\4.5.1\mockito-core-4.5.1.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\net\bytebuddy\byte-buddy\1.12.9\byte-buddy-1.12.9.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\net\bytebuddy\byte-buddy-agent\1.12.9\byte-buddy-agent-1.12.9.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\apache\maven\surefire\surefire-junit4\2.22.2\surefire-junit4-2.22.2.jar"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://openjdk.java.net/"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.boot.library.path" value="D:\Java_Lesson\Java\jdk-11.0.26\bin"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\Lenovo\AppData\Local\Temp\surefire11043316948983797626 2025-07-07T00-43-35_030-jvmRun1 surefire18157030842404197275tmp surefire_04702669465459360979tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Lenovo\Desktop\personal_assistant_release(完整前后端项目)\personal_assistant\task_module\target\test-classes;C:\Users\Lenovo\Desktop\personal_assistant_release(完整前后端项目)\personal_assistant\task_module\target\classes;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\junit\junit\4.13.2\junit-4.13.2.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\mockito\mockito-core\4.5.1\mockito-core-4.5.1.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\net\bytebuddy\byte-buddy\1.12.9\byte-buddy-1.12.9.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\net\bytebuddy\byte-buddy-agent\1.12.9\byte-buddy-agent-1.12.9.jar;D:\Java_Lesson\Maven\apache-maven-3.9.10\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Lenovo"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-01-21"/>
+    <property name="java.home" value="D:\Java_Lesson\Java\jdk-11.0.26"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Lenovo\Desktop\personal_assistant_release(完整前后端项目)\personal_assistant\task_module"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.26+7-LTS-187"/>
+    <property name="user.name" value="Lenovo"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="18.9"/>
+    <property name="localRepository" value="D:\Java_Lesson\Maven\apache-maven-3.9.10\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Lenovo\AppData\Local\Temp\"/>
+    <property name="java.version" value="11.0.26"/>
+    <property name="user.dir" value="C:\Users\Lenovo\Desktop\personal_assistant_release(完整前后端项目)\personal_assistant\task_module"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="D:\Java_Lesson\Java\jdk-11.0.26\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Java_Lesson\Maven\apache-maven-3.9.10\bin;D:\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;D:\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;D:\VMware\VMware Workstation\bin\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Python_Lesson\Python\Scripts\;D:\Python_Lesson\Python\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\MATLAB\runtime\win64;D:\MATLAB\bin;D:\Java_Lesson\Freshman Java tools(Practical training)\Maven\apache-maven-3.8.8\bin;D:\Java_Lesson\Java\jdk-11.0.26\bin;D:\Java_Lesson\Java\jdk-11.0.26\jre\bin;D:\Java_Lesson\Freshman Java tools(Practical training)\javafx-sdk-21.0.2\bin;D:\Java_Lesson\Java\jdk-19.0.2\bin;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;D:\NetSarang\Xshell 8\;D:\NetSarang\Xftp 8\;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;D:\WebStrom_project\Nodejs\;D:\WebStrom_project\Nodejs\node-v22.15.1-win-x64;D:\WebStrom_project\Nodejs\node-v22.15.1-win-x64\node_cache;D:\WebStrom_project\Nodejs\node-v22.15.1-win-x64\node_global;D:\WebStrom_project\Nodejs\node-v22.15.1-win-x64\node_global\node_modules;D:\Anaconda3;D:\Anaconda3\Scripts;D:\Anaconda3\Library\;D:\Kingbase\ES\V8\KESRealPro\V008R006C009B0014\Interface\compress\v8r6_compress_win\kb_x64\release;D:\WebStrom_project\Nodejs\node-v22.15.1-win-x64\node_;C:\Users\Lenovo\AppData\Local\Programs\cursor\resources\app\bin;."/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vm.version" value="11.0.26+7-LTS-187"/>
+    <property name="java.specification.maintenance.version" value="3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="testGetAllTypes_WithTypes" classname="com.assistant.task.TaskTypeServiceTest" time="0"/>
+  <testcase name="testAddType" classname="com.assistant.task.TaskTypeServiceTest" time="0"/>
+  <testcase name="testGetType_NonExisting" classname="com.assistant.task.TaskTypeServiceTest" time="0"/>
+  <testcase name="testGetType_Existing" classname="com.assistant.task.TaskTypeServiceTest" time="0"/>
+  <testcase name="testGetAllTypes_Empty" classname="com.assistant.task.TaskTypeServiceTest" time="0"/>
+</testsuite>

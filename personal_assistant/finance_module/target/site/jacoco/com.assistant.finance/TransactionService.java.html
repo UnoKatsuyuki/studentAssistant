@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransactionService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">finance_module</a> &gt; <a href="index.source.html" class="el_package">com.assistant.finance</a> &gt; <span class="el_source">TransactionService.java</span></div><h1>TransactionService.java</h1><pre class="source lang-java linenums">package com.assistant.finance;
+
+import java.time.LocalDate;
+import java.util.List;
+
+//添加收支记录和计算结余功能实现类
+public class TransactionService {
+    private final TransactionRepository repository;  //一条收支记录
+
+<span class="fc" id="L10">    public TransactionService(TransactionRepository repository) {</span>
+<span class="fc" id="L11">        this.repository = repository;</span>
+<span class="fc" id="L12">    }</span>
+
+    /**
+     * 添加一条收支记录
+     */
+    public void addTransaction(double amount, TransactionType type, LocalDate date, String description) {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (amount &lt;= 0) {</span>
+<span class="fc" id="L19">            throw new IllegalArgumentException(&quot;金额必须为正数&quot;);  //处理金额异常情况</span>
+        }
+<span class="fc" id="L21">        repository.addTransaction(new Transaction(amount, type, date, description));  //正常添加一条收支记录</span>
+<span class="fc" id="L22">    }</span>
+
+    /**
+     * 统计指定年月的结余 = 收入 - 支出
+     */
+    public double calculateMonthlyBalance(int year, int month) {
+<span class="fc" id="L28">        List&lt;Transaction&gt; all = repository.getAllTransactions();  //获取所有收支记录</span>
+<span class="fc" id="L29">        double income = 0, expense = 0;  //初始化总收入和总支出</span>
+
+        //遍历所有收支记录，计算总收入和总支出
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        for (Transaction t : all) {</span>
+<span class="fc bfc" id="L33" title="All 4 branches covered.">            if (t.getDate().getYear() == year &amp;&amp; t.getDate().getMonthValue() == month) {</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">                if (t.getType() == TransactionType.INCOME) {</span>
+<span class="fc" id="L35">                    income += t.getAmount();</span>
+                } else {
+<span class="fc" id="L37">                    expense += t.getAmount();</span>
+                }
+            }
+<span class="fc" id="L40">        }</span>
+
+<span class="fc" id="L42">        return income - expense;  //计算结余</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

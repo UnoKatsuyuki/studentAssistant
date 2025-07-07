@@ -1,0 +1,5 @@
+com\assistant\finance\TransactionType.class
+com\assistant\finance\TransactionService.class
+com\assistant\finance\TransactionUI.class
+com\assistant\finance\TransactionRepository.class
+com\assistant\finance\Transaction.class
