@@ -65,10 +65,10 @@ public class TaskConsoleUI {
         String desc = scanner.nextLine();
         System.out.print("优先级(1高/2中/3低): ");
         int priority = Integer.parseInt(scanner.nextLine());
-        System.out.print("截止时间(yyyy-MM-ddTHH:mm, 可空): ");
+        System.out.print("截止时间(yyyy-MM-dd-HH:mm, 可空): ");
         String dueStr = scanner.nextLine();
         LocalDateTime due = dueStr.isEmpty() ? null : LocalDateTime.parse(dueStr);
-        System.out.print("提醒时间(yyyy-MM-ddTHH:mm, 可空): ");
+        System.out.print("提醒时间(yyyy-MM-dd-HH:mm, 可空): ");
         String remindStr = scanner.nextLine();
         LocalDateTime remind = remindStr.isEmpty() ? null : LocalDateTime.parse(remindStr);
         listTypes();

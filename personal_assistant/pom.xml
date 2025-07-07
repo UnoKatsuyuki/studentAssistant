@@ -36,6 +36,7 @@
         <module>finance_module</module>
         <module>health_module</module>
         <module>main_app</module>
+        <module>gui_module</module>
     </modules>
 
 </project>
